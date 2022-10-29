@@ -1,154 +1,105 @@
 <template>
-  <div class="wrapper-background">
-    <b-form class="page-home container">
-      <h1 class="login-page-title">Entrar</h1>
-      <div class="card-home">
-        <b-row>
-          <b-form-input class="form-login-name" id="input-1" type="email" placeholder="email" required></b-form-input>
+  <div>
+    <div class="wrapper-background">
+      <b-nav class="conteudo-nav">
+        <div class="container-logo">
+          <img class="img-logo" src="../assets/logo.png" alt="logo">
+        </div>
+        <p class="logout"> sair</p>
+      </b-nav>
+    </div>
 
-        </b-row>
-        <b-row>
+    <div >
+
+      <b-card  img-alt="Image" img-top tag="article" style="max-width: 20rem;" class="mb-2">
+        <h2 class="title-movie"> {{ user.Title }}</h2>
+            <img  class="img-teste" src="../assets/black-2.jpg" alt="">
+       
+        <b-card-text class="title-genre"><span class="title-genre-color">Gêneros:</span> {{ user.Genre }} </b-card-text>
+        <b-card-text class="text-note"><span class="text-note-color"> Nota:</span> {{ user.imdbRating }} </b-card-text>
 
 
-          <b-form-input class="form-login-password" id="input-2" type="password" placeholder="senha" required>
-          </b-form-input>
-        </b-row>
-        <button class="login-page-botton">Entrar</button>
-        <p class="register-account">Não tem uma conta ainda? 
-          
-            <router-link class="link-register-account" to="/about">Cadastre-se</router-link>
-          
-        </p>
-      </div>
-    </b-form>
+        <b-button href="#" variant="primary">Go somewhere</b-button>
+      </b-card>
+    </div>
+
   </div>
 </template>
 
-
-
-<style scoped>
-.wrapper-background{
-  background-image: url("../assets/black.jpg");
-  height: 100vh;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-position-y: -20px;
-
-}
-.login-page-title {
-  color: white;
-  padding: 50px 0 50px 0;
-
-}
-
-.page-home {
-  background-color: rgba(0, 0, 0, .75);
-  border-radius: 4px;
-  padding: 20px 10px 20px 10px;
-  position: relative;
-    top: 300px;
-
-}
-
-.login-page-botton {
-  border: none;
-  height: 40px;
-  width: 120px;
-  border-radius: 3px;
-  margin: 20px 0 50px 0 ;
-}
-
-.form-login-name,
-.form-login-password {
-  margin-bottom: 10px;
-  margin-bottom: 30px;
-
-}
-
-@media (min-width:320px) and (max-width: 481px) {
-.page-home{
-  padding: 50px 20px 50px 20px;
-}
-
-}
-
-
-@media (min-width: 481px) and (max-width:768px) {
-  #app > div > form > div > div:nth-child(1),
-  #app > div > form > div > div:nth-child(2){
-  justify-content: center;
-}
-.form-login-name,.form-login-password {
-  width: 50%;
-}
-.page-login{
-    width: 80%;
-  }
-
-}
-@media (min-width: 769px) and (max-width: 1024px) {
-  #app > div > form > div > div:nth-child(1),
-  #app > div > form > div > div:nth-child(2){
-  justify-content: center;
-}
-.form-login-name,.form-login-password {
-  width: 50%;
-}
-.page-login{
-    width: 60%;
-  }
-
-}
-@media (min-width: 1025px) and (max-width: 1200px) {
-  #app > div > form > div > div:nth-child(1),
-  #app > div > form > div > div:nth-child(2){
-  justify-content: center;
-}
-.form-login-name,.form-login-password {
-  width: 50%;
-}
-.page-login{
-    width: 60%;
-  }
-
-}
-@media (min-width: 1201px)  {
-  #app > div > form > div > div:nth-child(1),
-  #app > div > form > div > div:nth-child(2){
-  justify-content: center;
-}
-.form-login-name,.form-login-password {
-  width: 50%;
-}
-.page-login{
-    width: 60%;
-  }
-
-}
-.register-account{
-color: white;
-}
-.link-register-account{
-  color: rgb(157 157 157);
-font-weight: bold;
-}
-</style>
-
-
 <script>
+import axios from "axios";
 
 export default {
   name: 'HomeView',
-  components: {
-
-  },
   data() {
     return {
-      form: {
-        email: '',
-        password: ''
-      }
-    }
-  }
-}
+      user: {},
+
+    };
+  },
+  created() {
+    this.getUser();
+
+  },
+  methods: {
+    getUser() {
+      axios
+        .get("http://www.omdbapi.com/?i=tt3896198&apikey=6e511a4a")
+        .then((res) => {
+          this.user = res.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
+};
 </script>
+  
+<style>
+.img-teste{
+  height:200px;
+}
+.wrapper-background {
+  background-color: rgba(32, 32, 32, 0.952);
+}
+
+.container-logo {
+  padding: 10px 20px;
+}
+
+.img-logo {
+  width: 40px;
+}
+
+.conteudo-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logout {
+  padding: 10px 20px;
+  color: white;
+  cursor: pointer;
+}
+.title-movie{
+  font-weight: bold;
+  font-size: 25px;
+
+}
+.title-genre{
+font-size: 17px;
+text-align: start;
+}
+.title-genre-color{
+font-weight: bold
+}
+.text-note{
+font-size: 17px;
+text-align: start;
+}
+.text-note-color{
+  font-weight: bold;
+
+}
+</style>
