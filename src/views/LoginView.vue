@@ -6,14 +6,14 @@
         <h1 class="login-page-title">Entrar</h1>
         <div>
           <b-row>
-            <b-form-input v-model="email" class="form-login-name" type="email" placeholder="E-mail" required>
+            <b-form-input v-model="email" class="form-login-name" type="email" autocomplete="off" placeholder="Digite a sua senha" required>
             </b-form-input>
           </b-row>
           <b-row>
-            <b-form-input v-model="password" class="form-login-password" type="password" placeholder="Senha" required>
+            <b-form-input v-model="password" class="form-login-password" type="password"   autocomplete="off" placeholder="Digite a sua senha" >
             </b-form-input>
           </b-row>
-          <button @click="login" class="login-page-botton"> Entrar</button>
+          <button @click.prevent="login" class="login-page-botton"> Entrar</button>
 
           <p class="register-account">Não tem uma conta ainda?<router-link class="link-register-account" to="/register"> <span class="register-link"> Cadastre-se</span> </router-link>
           </p>
@@ -43,7 +43,7 @@ export default {
   methods: {
     login() {
       firebase
-        .auth()
+      .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(
           (result) => {
@@ -76,7 +76,7 @@ export default {
 }
 .page-login-center{
   position: relative!important;
-  top: 100px;
+  top: 25%;
 }
 .page-card-home {
   background-color: rgba(0, 0, 0, .75);
@@ -116,6 +116,11 @@ export default {
 }
 .register-link{
   font-size: 10px;
+}
+@media screen and (min-width: 768px)   {
+.page-card-home{
+  width:400px;
+}
 }
 </style>
 
