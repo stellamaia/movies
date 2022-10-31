@@ -6,15 +6,15 @@
           <h1 class="register-page-title">Cadastre-se</h1>
           <div>
             <b-row>
-              <b-form-input class="form-register-name" type="text" placeholder="Nome" required></b-form-input>
+              <b-form-input v-model="name" class="form-register-name" type="text" placeholder="Nome"  autocomplete="off"  required></b-form-input>
             </b-row>
             <b-row>
-              <b-form-input class="form-register-email" type="email" placeholder="E-mail" required></b-form-input>
+              <b-form-input v-model="email" class="form-register-email" type="email" placeholder="E-mail"  autocomplete="off"  required></b-form-input>
             </b-row>
             <b-row>
-              <b-form-input class="form-register-password" type="password" placeholder="Senha" required></b-form-input>
+              <b-form-input v-model="password" class="form-register-password" type="password"   autocomplete="off"  placeholder="Senha" ></b-form-input>
             </b-row>
-            <button class="register-page-botton"> Cadastrar</button>
+            <button @click.prevent="register"  class="register-page-botton"> Cadastrar</button>
 
           <p class="login-account">Não tem uma conta ainda?
           <router-link class="link-login-account" to="/"> <span> Entrar</span></router-link>
@@ -27,6 +27,59 @@
 
   </div>
 </template>
+
+
+<script>
+
+import { firebaseDb, firebaseAuth } from "../firebaseConfig";
+
+export default {
+  name: "RegisterView",
+  data(){
+    return{
+      name:'',
+      email: '',
+      password: '',
+      initials: ""
+    };
+  },
+  methods:{
+    register(){
+      firebaseAuth
+      .createUserWithEmailAndPassword(this.email, this.password)
+      .then(
+          (result) => {
+            firebaseDb
+          .collection("users")
+          .doc(result.user.uid)
+          .set({
+            id: result.user.uid,
+            name: this.name,
+            email: this.email,
+        
+          })
+          .then(() =>{
+            this.$swal(
+              "Sucesso",
+              "Conta criado com sucesso!",
+              "success"
+            )
+            .then((error) =>{
+              console.log(error);
+            });
+          },
+          (err) =>{
+            console.log(err);
+            this.$swal("Oops...", "Preencha todos os campos!", "error");
+          }
+          )
+        }
+      )
+    }
+  }
+}
+
+</script>
 
 <style scoped>
 .wrapper-background-register {
@@ -42,7 +95,7 @@
 
 .page-register-center{
   position: relative !important;
-  top: 100px;
+  top: 25%;
 }
 .page-card-register {
   background-color: rgba(0, 0, 0, .75);
@@ -86,5 +139,10 @@
 
 .link-login-account:hover {
   color: rgb(92, 92, 92);
+}
+@media screen and (min-width: 768px)   {
+.page-card-register{
+  width:400px;
+}
 }
 </style>
