@@ -322,7 +322,11 @@ button.close {
   top: 45%;
 
 }
+.card-body{
+  color: rgb(0, 0, 0);
+}
 .modal-movies{
   color: rgb(0, 0, 0);
 }
+
 </style>
