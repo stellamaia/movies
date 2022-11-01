@@ -287,7 +287,7 @@ article.card.mb-2 {
 }
 
 .card-img-top {
-  height: 50%;
+  height: 60%;
 }
 
 .card-body {
