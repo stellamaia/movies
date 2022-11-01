@@ -324,9 +324,12 @@ button.close {
 }
 .card-body{
   color: rgb(0, 0, 0);
+  height: 0px;
+  padding: 16px 16px 0 16px;
 }
 .modal-movies{
   color: rgb(0, 0, 0);
+  height: 350px;
 }
 
 </style>
