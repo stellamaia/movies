@@ -125,7 +125,7 @@ export default {
     getMovie() {
       const apikey = "edeaa103";
       axios
-        .get(`http://www.omdbapi.com/?t=${this.search}&apikey=${apikey}`)
+        .get(`https://www.omdbapi.com/?t=${this.search}&apikey=${apikey}`)
         .then((res) => {
           this.movie = res.data;
         })
@@ -315,4 +315,14 @@ button.close {
 .modal-footer{
   display: none!important;
 }
+#app > div > div{
+  position: relative;
+  top: 45%;
+  color: white;
+}
+#app > div > div > a > p{
+  color:white;
+
+}
+
 </style>
