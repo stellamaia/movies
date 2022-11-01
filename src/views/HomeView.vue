@@ -325,4 +325,7 @@ color: white;
   top: 45%;
 
 }
+.modal-movies{
+  color: rgb(0, 0, 0);
+}
 </style>
