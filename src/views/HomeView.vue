@@ -87,10 +87,11 @@
       </div>
     </div>
 
-    <div v-else>
-      <h1 class="sem-acesso">Sem Acesso!</h1>
-      <router-link class="voltar-login" to="/">
-        <p>Voltar para página de <span class="login">Login</span></p>
+    <div class="page-no-access"
+     v-else>
+      <h1 class="no-access">No Access!</h1>
+      <router-link class="return-login" to="/">
+        <p>Return page to <span class="login">Login</span></p>
       </router-link>
     </div>
   </div>
@@ -315,14 +316,13 @@ button.close {
 .modal-footer{
   display: none!important;
 }
-#app > div > div{
-
-
-  color: white;
-}
-#app > div > div > a > p{
-  color:white;
+.no-access, .return-login{
+color: white;
 
 }
+.page-no-access{
+  position: relative;
+  top: 45%;
 
+}
 </style>
