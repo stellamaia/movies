@@ -326,7 +326,7 @@ button.close {
 .body-modal-image{
   color: rgb(0, 0, 0);
   height: 350px;
-  padding: 16px 16px 0 16px;
+  padding: 16px ;
 }
 .modal-movies{
   color: rgb(0, 0, 0);
