@@ -23,9 +23,7 @@
             <b-form-input class="input-search" id="input-2" v-model="search" placeholder="Search..." required>
             </b-form-input>
             <b-button @click="getMovie()" class="pesquisa-botao">Search </b-button>
-
           </b-col>
-
         </b-row>
       </div>
 
