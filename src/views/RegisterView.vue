@@ -3,21 +3,21 @@
     <div class="page-register-center">
       <b-card img-top style="max-width: 20rem;" class="mb-2 page-card-register">
         <b-form class="container">
-          <h1 class="register-page-title">Cadastre-se</h1>
+          <h1 class="register-page-title">Sign Up</h1>
           <div>
             <b-row>
-              <b-form-input v-model="name" class="form-register-name" type="text" placeholder="Nome"  autocomplete="off"  required></b-form-input>
+              <b-form-input v-model="name" class="form-register-name" type="text" placeholder="Name"  autocomplete="off"  required></b-form-input>
             </b-row>
             <b-row>
-              <b-form-input v-model="email" class="form-register-email" type="email" placeholder="E-mail"  autocomplete="off"  required></b-form-input>
+              <b-form-input v-model="email" class="form-register-email" type="email" placeholder="Email"  autocomplete="off"  required></b-form-input>
             </b-row>
             <b-row>
-              <b-form-input v-model="password" class="form-register-password" type="password"   autocomplete="off"  placeholder="Senha" ></b-form-input>
+              <b-form-input v-model="password" class="form-register-password" type="password"   autocomplete="off"  placeholder="Password" ></b-form-input>
             </b-row>
-            <button @click.prevent="register"  class="register-page-botton"> Cadastrar</button>
+            <button @click.prevent="register"  class="register-page-botton">  Sign Up</button>
 
-          <p class="login-account">Não tem uma conta ainda?
-          <router-link class="link-login-account" to="/"> <span> Entrar</span></router-link>
+          <p class="login-account">Already have an account?
+          <router-link class="link-login-account" to="/"> <span> Sign In</span></router-link>
         </p>
           </div>
         </b-form>
@@ -63,17 +63,16 @@ export default {
               "Sucesso",
               "Conta criado com sucesso!",
               "success"
-            )
-            .then((error) =>{
-              console.log(error);
-            });
-          },
-          (err) =>{
+            ).then(() => this.$router.push("/"));
+               
+          });
+
+        },
+        (err) => {
             console.log(err);
             this.$swal("Oops...", "Preencha todos os campos!", "error");
           }
-          )
-        }
+
       )
     }
   }
