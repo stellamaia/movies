@@ -1,37 +1,30 @@
 <template>
   <div class="wrapper-background-register">
     <div class="page-register-center page-card-register">
-
-        <b-form >
-
+      <b-form>
         <div class="container">
-          <b-row> 
-             <h1 class="register-page-title">Sign Up</h1>
-            </b-row>
-
-
-     
-            <b-row>
-              <b-form-input v-model="name" class="form-register-name" type="text" placeholder="Name"  autocomplete="off"  required></b-form-input>
-            </b-row>
-            <b-row>
-              <b-form-input v-model="email" class="form-register-email" type="email" placeholder="Email"  autocomplete="off"  required></b-form-input>
-            </b-row>
-            <b-row>
-              <b-form-input v-model="password" class="form-register-password" type="password"   autocomplete="off"  placeholder="Password" ></b-form-input>
-            </b-row>
-
-            <button @click.prevent="register"  class="register-page-botton">  Sign Up</button>
-
+          <b-row>
+            <h1 class="register-page-title">Sign Up</h1>
+          </b-row>
+          <b-row>
+            <b-form-input v-model="name" class="form-register-name" type="text" placeholder="Username" autocomplete="off"
+              required></b-form-input>
+          </b-row>
+          <b-row>
+            <b-form-input v-model="email" class="form-register-email" type="email" placeholder="E-mail"
+              autocomplete="off" required></b-form-input>
+          </b-row>
+          <b-row>
+            <b-form-input v-model="password" class="form-register-password" type="password" autocomplete="off"
+              placeholder="Password"></b-form-input>
+          </b-row>
+          <button @click.prevent="register" class="register-page-botton"> Sign Up</button>
           <p class="login-account">Already have an account?
-          <router-link class="link-login-account" to="/"> <span> Sign In</span></router-link>
-        </p>
-      </div>
-        </b-form>
-
-
+            <router-link class="link-login-account" to="/"> <span> Sign In</span></router-link>
+          </p>
+        </div>
+      </b-form>
     </div>
-
   </div>
 </template>
 
@@ -42,46 +35,52 @@ import { firebaseDb, firebaseAuth } from "../firebaseConfig";
 
 export default {
   name: "RegisterView",
-  data(){
-    return{
-      name:'',
+  data() {
+    return {
+      name: '',
       email: '',
       password: '',
       initials: ""
     };
   },
-  methods:{
-    register(){
-      firebaseAuth
-      .createUserWithEmailAndPassword(this.email, this.password)
-      .then(
-          (result) => {
-            firebaseDb
-          .collection("users")
-          .doc(result.user.uid)
-          .set({
-            id: result.user.uid,
-            name: this.name,
-            email: this.email,
-        
-          })
-          .then(() =>{
-            this.$swal(
-              "Sucesso",
-              "Conta criado com sucesso!",
-              "success"
-            ).then(() => this.$router.push("/"));
-               
-          });
+  methods: {
 
-        },
-        (err) => {
-            console.log(err);
-            this.$swal("Oops...", "Preencha todos os campos!", "error");
-          }
+    register() {
+      if (this.name != "") {
 
-      )
-    }
+
+        firebaseAuth
+          .createUserWithEmailAndPassword(this.email, this.password)
+          .then(
+            (result) => {
+              firebaseDb
+                .collection("users")
+                .doc(result.user.uid)
+                .set({
+                  id: result.user.uid,
+                  name: this.name,
+                  email: this.email,
+
+                })
+                .then(() => {
+                  this.$swal(
+                    "Success",
+                    "Account created successfully!",
+                    "success"
+                  ).then(() => this.$router.push("/"));
+
+                });
+            },
+            (err) => {
+              this.$swal("Oops...", err.message, "error");
+            }
+          )
+      } else {
+        this.$swal("Oops...", "Username is required", "error");
+      }
+
+    },
+
   }
 }
 
@@ -89,7 +88,7 @@ export default {
 
 <style scoped>
 .wrapper-background-register {
-  background-image:  url("../assets/black.jpg");
+  background-image: url("../assets/black.jpg");
   height: 100vh;
   width: 100%;
   background-position: center;
@@ -97,10 +96,11 @@ export default {
   background-repeat: no-repeat;
 }
 
-.page-register-center{
+.page-register-center {
   position: relative !important;
   top: 20%;
 }
+
 .page-card-register {
   background-color: rgba(0, 0, 0, .75);
   border-radius: 4px;
@@ -108,6 +108,7 @@ export default {
   justify-content: center;
   display: inline-flex;
 }
+
 .register-page-title {
   color: rgb(255, 255, 255);
   font-weight: 700;
@@ -121,6 +122,7 @@ export default {
   margin-bottom: 30px;
   border: 1px solid rgb(255, 255, 255);
 }
+
 .register-page-botton {
   border: none;
   height: 40px;
@@ -159,7 +161,7 @@ export default {
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
-  .page-card-register{
+  .page-card-register {
     width: 60%;
   }
 
@@ -201,6 +203,5 @@ export default {
     width: 16rem !important;
   }
 }
-
 </style>
 
