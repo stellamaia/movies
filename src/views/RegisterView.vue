@@ -1,10 +1,16 @@
 <template>
   <div class="wrapper-background-register">
-    <div class="page-register-center">
-      <b-card img-top style="max-width: 20rem;" class="mb-2 page-card-register">
-        <b-form class="container">
-          <h1 class="register-page-title">Sign Up</h1>
-          <div>
+    <div class="page-register-center page-card-register">
+
+        <b-form >
+
+        <div class="container">
+          <b-row> 
+             <h1 class="register-page-title">Sign Up</h1>
+            </b-row>
+
+
+     
             <b-row>
               <b-form-input v-model="name" class="form-register-name" type="text" placeholder="Name"  autocomplete="off"  required></b-form-input>
             </b-row>
@@ -14,15 +20,16 @@
             <b-row>
               <b-form-input v-model="password" class="form-register-password" type="password"   autocomplete="off"  placeholder="Password" ></b-form-input>
             </b-row>
+
             <button @click.prevent="register"  class="register-page-botton">  Sign Up</button>
 
           <p class="login-account">Already have an account?
           <router-link class="link-login-account" to="/"> <span> Sign In</span></router-link>
         </p>
-          </div>
+      </div>
         </b-form>
 
-      </b-card>
+
     </div>
 
   </div>
@@ -88,43 +95,42 @@ export default {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-
-
 }
 
 .page-register-center{
   position: relative !important;
-  top: 25%;
+  top: 20%;
 }
 .page-card-register {
   background-color: rgba(0, 0, 0, .75);
   border-radius: 4px;
   padding: 20px 10px 20px 10px;
-  position: relative;
+  justify-content: center;
   display: inline-flex;
-
 }
 .register-page-title {
-  color: white;
+  color: rgb(255, 255, 255);
+  font-weight: 700;
   padding-bottom: 10px;
+  padding-bottom: 50px;
 }
+
 .form-register-name,
 .form-register-email,
 .form-register-password {
   margin-bottom: 30px;
+  border: 1px solid rgb(255, 255, 255);
 }
 .register-page-botton {
   border: none;
   height: 40px;
   width: 120px;
   border-radius: 3px;
-  margin: 20px 0 30px 0;
+  margin: 50px 0 30px 0;
+  color: white;
+  background-color: black;
+}
 
-}
-#app > div > div > div > div > form > div > button > a{
-  text-decoration: none;
-  color: black;
-}
 
 .login-account {
   color: white;
@@ -134,14 +140,67 @@ export default {
 .link-login-account {
   color: rgb(157 157 157);
   font-weight: bold;
+  text-decoration: none;
 }
 
 .link-login-account:hover {
   color: rgb(92, 92, 92);
 }
-@media screen and (min-width: 768px)   {
-.page-card-register{
-  width:400px;
+
+@media screen and (min-width: 320px) and (max-width: 481px) {
+  .page-card-register {
+    width: 90%;
+  }
+
+  .form-control {
+
+    width: 16rem !important;
+  }
 }
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .page-card-register{
+    width: 60%;
+  }
+
+  .form-control {
+
+    width: 19rem !important;
+  }
 }
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .page-card-register {
+    width: 50%;
+  }
+
+  .form-control {
+
+    width: 19rem !important;
+  }
+}
+
+@media screen and (min-width:1025px) and (max-width: 1200px) {
+  .page-card-register {
+    width: 50%;
+  }
+
+  .form-control {
+
+    width: 16rem !important;
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .page-card-register {
+    width: 30%;
+  }
+
+  .form-control {
+
+    width: 16rem !important;
+  }
+}
+
 </style>
+
