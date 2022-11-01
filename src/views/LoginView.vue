@@ -2,7 +2,6 @@
   <div class="wrapper-background ">
     <div class="page-login-center page-card-login">
       <b-form>
-
         <div class="container">
           <b-row>
             <h1 class="login-page-title">Login</h1>
@@ -24,8 +23,6 @@
           </p>
         </div>
       </b-form>
-
-
     </div>
 
   </div>

@@ -7,8 +7,8 @@
             <h1 class="register-page-title">Sign Up</h1>
           </b-row>
           <b-row>
-            <b-form-input v-model="name" class="form-register-name" type="text" placeholder="Username" autocomplete="off"
-              required></b-form-input>
+            <b-form-input v-model="name" class="form-register-name" type="text" placeholder="Username"
+              autocomplete="off" required></b-form-input>
           </b-row>
           <b-row>
             <b-form-input v-model="email" class="form-register-email" type="email" placeholder="E-mail"

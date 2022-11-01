@@ -73,7 +73,6 @@
 
               <p><span class="text-color">Metascore:</span> {{ movie.Metascore }}</p>
               <p><span class="text-color">imdbRating:</span> {{ movie.imdbRating }}</p>
-
               <p><span class="text-color">imdbVotes:</span> {{ movie.imdbVotes }}</p>
               <p><span class="text-color">imdbID:</span> {{ movie.imdbID }}</p>
               <p><span class="text-color">Type:</span> {{ movie.Type }}</p>
@@ -82,11 +81,8 @@
               <p><span class="text-color">Production:</span> {{ movie.Production }}</p>
               <p><span class="text-color">Website:</span> {{ movie.Website }}</p>
               <p><span class="text-color">Response:</span> {{ movie.Response }}</p>
-
             </b-col>
-
           </b-row>
-
         </b-modal>
       </div>
     </div>
