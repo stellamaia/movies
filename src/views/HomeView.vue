@@ -332,5 +332,13 @@ button.close {
   color: rgb(0, 0, 0);
 padding: 0;
 }
+@media screen and (min-width: 768px) {
+  .body-modal-image{
+    height: 450px;
+  }
+  #app > div > div > div:nth-child(3) > div > div > article > img{
+height: 70%;
+  }
+}
 
 </style>
