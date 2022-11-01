@@ -316,10 +316,7 @@ button.close {
 .modal-footer{
   display: none!important;
 }
-.no-access, .return-login{
-color: white;
 
-}
 .page-no-access{
   position: relative;
   top: 45%;
