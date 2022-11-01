@@ -31,7 +31,7 @@
         <b-row>
           <b-col class="modal-movies" lg="4" sm="12" md="6">
             <b-card v-b-modal.modal-1 :img-src="movie.Poster" img-alt="Image" img-top tag="article"
-              style="max-width: 20rem;" class="mb-2">
+              style="max-width: 20rem;" class="mb-2 body-modal-image">
               <h2 class="title-movie"> {{ movie.Title }}</h2>
               <b-card-text class="title-genre"><span class="text-color"></span>Genre: {{ movie.Genre }} </b-card-text>
               <b-card-text class="text-note"><span class="text-color"> </span> Rating: {{ movie.imdbRating }}
@@ -322,14 +322,14 @@ button.close {
   top: 45%;
 
 }
-.card-body{
+.body-modal-image{
   color: rgb(0, 0, 0);
-  height: 0px;
+  height: 350px;
   padding: 16px 16px 0 16px;
 }
 .modal-movies{
   color: rgb(0, 0, 0);
-  height: 350px;
+padding: 0;
 }
 
 </style>
