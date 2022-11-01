@@ -6,18 +6,24 @@
           <div class="container-logo">
             <img class="img-logo" src="../assets/logo.png" alt="logo">
           </div>
-          <b-button @click="logout()" class="logout"> sair</b-button>
+          <div class="button-content">
+            <b-button @click="logout()" class="logout"> Open</b-button>
+          </div>
         </b-nav>
       </div>
 
       <div class="container">
+        <b-row>
+          <h3 class="card-title container-title">Hello, {{ dados?.name }}!</h3>
+          <p class="title-search">Search movies</p>
+        </b-row>
 
         <b-row class="container-search">
           <b-col lg="6" sm="6" md="6">
-            <b-form-input class="input-search" id="input-2" v-model="search" placeholder="Pesquisar..." required>
+            <b-form-input class="input-search" id="input-2" v-model="search" placeholder="Search..." required>
             </b-form-input>
-            <b-button @click="getMovie()" class="pesquisa-botao">Buscar </b-button>
-            <p class="card-title">Olá, {{ dados?.name }}!</p>
+            <b-button @click="getMovie()" class="pesquisa-botao">Search </b-button>
+
           </b-col>
 
         </b-row>
@@ -32,8 +38,8 @@
 
 
               <h2 class="title-movie"> {{ movie.id }}{{ movie.Title }}</h2>
-              <b-card-text class="title-genre"><span class="text-color">Gêneros:</span> {{ movie.Genre }} </b-card-text>
-              <b-card-text class="text-note"><span class="text-color"> Nota:</span> {{ movie.imdbRating }}
+              <b-card-text class="title-genre"><span class="text-color"></span>Genre: {{ movie.Genre }} </b-card-text>
+              <b-card-text class="text-note"><span class="text-color"> </span> Rating: {{ movie.imdbRating }}
               </b-card-text>
             </b-card>
           </b-col>
@@ -151,7 +157,7 @@ export default {
 };
 </script>
   
-<style>
+<style scoped>
 .img-teste {
   height: 200px;
 }
@@ -159,14 +165,11 @@ export default {
 .wrapper-background-home {
   background-color: rgb(44, 44, 44);
   height: 100vh;
-
 }
 
 .wrapper-background {
   background-color: rgba(32, 32, 32, 0.952);
-  position: fixed;
-  z-index: 1;
-  width: 100%;
+
 }
 
 .container-logo {
@@ -177,17 +180,25 @@ export default {
   width: 40px;
 }
 
+.button-content {
+
+  padding: 10px;
+}
+
+.logout {
+  border-radius: 50px;
+  background-color: rgb(104, 103, 103);
+  color: white;
+  cursor: pointer;
+}
+
 .conteudo-nav {
   display: flex;
   justify-content: space-between;
 
 }
 
-.logout {
-  padding: 10px 20px;
-  color: white;
-  cursor: pointer;
-}
+
 
 .title-movie {
   font-weight: bold;
@@ -200,10 +211,7 @@ export default {
   text-align: start;
 }
 
-.title-genre-modal {
-  font-weight: bold;
-  margin-top: 0;
-}
+
 
 .text-color {
   font-weight: bold;
@@ -229,18 +237,19 @@ export default {
 
 }
 
-button.close {
-  font-size: 35px;
-  background-color: transparent;
-}
-
-#modal-1___BV_modal_footer_ {
-  display: none;
+.container-title {
+  justify-content: start;
+  display: flex;
+  padding: 20px 0 20px 0;
 }
 
 .container-search {
   justify-content: center;
-  padding: 100px 0 50px 0;
+
+
+}
+#app > div > div > div:nth-child(2){
+  padding-bottom: 20px;
 }
 
 article.card.mb-2 {
@@ -279,5 +288,37 @@ article.card.mb-2 {
   justify-content: center;
 }
 
-@media screen and (min-width: 1024px) and (max-width: 1044px) {}
+.card-title {
+  color: white;
+}
+
+.title-search {
+  color: white;
+ 
+
+}
+
+.card-img-top {
+  height: 50%;
+}
+
+.card-body {
+  height: 110px;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+button.close {
+  font-size: 40px !important;
+  background-color: transparent !important;
+
+}
+
+.title-genre-modal {
+  font-weight: bold;
+  margin-top: 0!important;
+}
+
 </style>
