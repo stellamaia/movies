@@ -8,7 +8,7 @@
             <h1 class="login-page-title">Login</h1>
           </b-row>
           <b-row>
-            <b-form-input v-model="email" class="form-login-name" type="email" autocomplete="off" placeholder="Email"
+            <b-form-input v-model="email" class="form-login-name" type="email" autocomplete="off" placeholder="E-mail"
               required>
             </b-form-input>
           </b-row>
@@ -55,10 +55,11 @@ export default {
             localStorage.setItem("token", result.user.uid);
             this.$router.push("/home");
           },
-          () => {
+          (err) => {
+            
             this.$swal(
               "Oops...",
-              "Você ainda não criou uma conta ou senha incorreta",
+              err.message,
               "error"
             )
           }
