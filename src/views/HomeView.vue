@@ -189,13 +189,14 @@ export default {
 
 .title-movie {
   font-weight: bold;
-  font-size: 25px;
+  font-size: 20px;
 
 }
 
 .title-genre {
   font-size: 17px;
   text-align: start;
+  margin: 0;
 }
 
 
@@ -287,7 +288,7 @@ article.card.mb-2 {
 }
 
 .card-img-top {
-  height: 60%;
+  height: 70%;
 }
 
 .card-body {
@@ -325,7 +326,7 @@ button.close {
 .body-modal-image{
   color: rgb(0, 0, 0);
   height: 350px;
-  padding: 16px 16px 0 16px;
+  padding: 16px ;
 }
 .modal-movies{
   color: rgb(0, 0, 0);
