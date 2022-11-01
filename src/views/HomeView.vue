@@ -316,8 +316,8 @@ button.close {
   display: none!important;
 }
 #app > div > div{
-  position: relative;
-  top: 45%;
+
+
   color: white;
 }
 #app > div > div > a > p{
