@@ -3,19 +3,19 @@
     <div class="page-login-center">
     <b-card img-top style="max-width: 20rem; " class="mb-2 page-card-home ">
       <b-form class="container">
-        <h1 class="login-page-title">Entrar</h1>
+        <h1 class="login-page-title">Login</h1>
         <div>
           <b-row>
-            <b-form-input v-model="email" class="form-login-name" type="email" autocomplete="off" placeholder="Digite a sua senha" required>
+            <b-form-input v-model="email" class="form-login-name" type="email" autocomplete="off" placeholder="Email" required>
             </b-form-input>
           </b-row>
           <b-row>
-            <b-form-input v-model="password" class="form-login-password" type="password"   autocomplete="off" placeholder="Digite a sua senha" >
+            <b-form-input v-model="password" class="form-login-password" type="password"   autocomplete="off" placeholder="Password" >
             </b-form-input>
           </b-row>
-          <button @click.prevent="login" class="login-page-botton"> Entrar</button>
+          <button @click.prevent="login" class="login-page-botton"> Sign in</button>
 
-          <p class="register-account">Não tem uma conta ainda?<router-link class="link-register-account" to="/register"> <span class="register-link"> Cadastre-se</span> </router-link>
+          <p class="register-account">Don't have an account?<router-link class="link-register-account" to="/register"> <span class="register-link"> Sign Up</span> </router-link>
           </p>
         </div>
       </b-form>
