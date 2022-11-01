@@ -7,7 +7,7 @@
             <img class="img-logo" src="../assets/logo.png" alt="logo">
           </div>
           <div class="button-content">
-            <b-button @click="logout()" class="logout"> Open</b-button>
+            <b-button @click="logout()" class="logout"> Logout</b-button>
           </div>
         </b-nav>
       </div>
@@ -20,35 +20,29 @@
 
         <b-row class="container-search">
           <b-col lg="6" sm="6" md="6">
-            <b-form-input class="input-search" id="input-2" v-model="search" placeholder="Search..." required>
+            <b-form-input class="input-search" id="input-2" v-model="search" placeholder="Title of movie" required>
             </b-form-input>
             <b-button @click="getMovie()" class="pesquisa-botao">Search </b-button>
           </b-col>
         </b-row>
       </div>
 
-      <div class="container">
+      <div v-if="movie.Title" class="container">
         <b-row>
-          <!--v-for="movie in movies" :key="movie.id"-->
           <b-col class="modal-movies" lg="4" sm="12" md="6">
             <b-card v-b-modal.modal-1 :img-src="movie.Poster" img-alt="Image" img-top tag="article"
               style="max-width: 20rem;" class="mb-2">
-
-
-              <h2 class="title-movie"> {{ movie.id }}{{ movie.Title }}</h2>
+              <h2 class="title-movie"> {{ movie.Title }}</h2>
               <b-card-text class="title-genre"><span class="text-color"></span>Genre: {{ movie.Genre }} </b-card-text>
               <b-card-text class="text-note"><span class="text-color"> </span> Rating: {{ movie.imdbRating }}
               </b-card-text>
             </b-card>
           </b-col>
-
         </b-row>
       </div>
 
-
-
       <div>
-        <b-modal id="modal-1" size="xl" :title="movie.Title">
+        <b-modal :hide-footer="true"  id="modal-1" size="xl" :title="movie.Title">
 
           <b-row>
             <b-col cols="12" sm="12" md="12" lg="6" xl="6">
@@ -68,8 +62,15 @@
               <p><span class="text-color">Plot:</span> {{ movie.Plot }}</p>
               <p><span class="text-color">Awards:</span> {{ movie.Awards }}</p>
               <p><span class="text-color">Country:</span> {{ movie.Country }}</p>
+              <div v-for="(rating, index) in movie.Ratings" :key="index">
+                <ul>
+                  <li>
+                    <span class="text-color">Source:</span> {{ rating.Source }}
+                  </li>
+                  <li> <span class="text-color">Value:</span> {{ rating.Value }}</li>
+                </ul>
+              </div>
 
-              <!--  <p><span class="text-color">Ratings:</span> {{ movie.Ratings }}</p>  -->
               <p><span class="text-color">Metascore:</span> {{ movie.Metascore }}</p>
               <p><span class="text-color">imdbRating:</span> {{ movie.imdbRating }}</p>
 
@@ -83,7 +84,6 @@
               <p><span class="text-color">Response:</span> {{ movie.Response }}</p>
 
             </b-col>
-
 
           </b-row>
 
@@ -142,15 +142,7 @@ export default {
       this.$router.push("/")
     }
   },
-  // computed: {
-  //   movies() {
-  //     return this.users?.filter((movie) => {
-  //       return movie.name
-  //         .toLowerCase()
-  //         .includes(this.search.toLowerCase());
-  //     })
-  //   }
-  // }
+
 
 };
 </script>
@@ -246,7 +238,8 @@ export default {
 
 
 }
-#app > div > div > div:nth-child(2){
+
+#app>div>div>div:nth-child(2) {
   padding-bottom: 20px;
 }
 
@@ -292,7 +285,7 @@ article.card.mb-2 {
 
 .title-search {
   color: white;
- 
+
 
 }
 
@@ -316,7 +309,14 @@ button.close {
 
 .title-genre-modal {
   font-weight: bold;
-  margin-top: 0!important;
+  margin-top: 0 !important;
 }
 
+.row {
+  justify-content: center;
+  display: flex;
+}
+.modal-footer{
+  display: none!important;
+}
 </style>
