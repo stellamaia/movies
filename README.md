@@ -1,7 +1,8 @@
 # movies
 
 
-!(https://github.com/stellamaia/movies/assets/78916702/7459318b-dbf1-45cb-a248-8d309b5e6134)
+
+![tela](https://github.com/stellamaia/movies/assets/78916702/36ad7dac-1b25-4f09-9552-b404c251f2d8)
 
 ## Project setup
 ```
