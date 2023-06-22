@@ -1,6 +1,7 @@
 # movies
 
-![Captura de Tela 2022-06-11 às 02 02 17](https://user-images.githubusercontent.com/Uploading Captura de Tela 2023-06-22 às 15.15.25.png)
+
+!(https://github.com/stellamaia/movies/assets/78916702/7459318b-dbf1-45cb-a248-8d309b5e6134)
 
 ## Project setup
 ```
