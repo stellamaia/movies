@@ -1,6 +1,6 @@
 # movies
-![Uploading Captura de Tela 2023-06-22 às 15.15.25.png…]()
 
+![Captura de Tela 2022-06-11 às 02 02 17](https://user-images.githubusercontent.com/Uploading Captura de Tela 2023-06-22 às 15.15.25.png)
 
 ## Project setup
 ```
